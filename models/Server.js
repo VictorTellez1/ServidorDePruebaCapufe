@@ -1,31 +1,38 @@
-import express from "express"
+import express from 'express'
 import cors from 'cors'
-import authLectura from "../routes/lectura.js"
 
+
+import routerCapufe from '../routes/capufe.js'
 export class Server{
     constructor(){
         this.app=express()
-        this.port=8080
-        this.routes={
-            verificacion:'/api/capufe'
-        }
+        this.port=process.env.PORT
+        this.capufePath='/api/capufe'
+
+
+        //Middleware
         this.middlewares()
-        this.router()
+        //Rutas de la aplicacion
+        this.routes()
     }
-    middlewares()
-    {
-        this.app.use(express.json())
+
+  
+
+    middlewares(){
+        //Directorio publico
         this.app.use(express.static('public'))
         this.app.use(cors())
+        //Parse y lectura del body
+        this.app.use(express.json())
     }
-    router()
-    {
-        this.app.use(this.routes.verificacion,authLectura)
+
+    routes(){
+        this.app.use(this.capufePath,routerCapufe)
     }
-    listen()
-    {
+    listen(){
         this.app.listen(this.port,()=>{
-            console.log("Servidor corriendo en el puerto 8080")
+            console.log(`Servidor corriendo en el puerto: ${this.port} ` )
         })
     }
 }
+
