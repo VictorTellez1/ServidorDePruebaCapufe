@@ -4,10 +4,15 @@ import { response,request } from "express";
 
 export const tokenGet=async(req,res=response)=>{
     const {token,caseta}=req.query
-    console.log(token)
+    const primerParte=token.slice(0,12)
+    let segundaParte=token.slice(12,13)
+    segundaParte.split('').join(" ")
+    segundaParte=" "+segundaParte
+    const ultimoString=primerParte+segundaParte
+    console.log(ultimoString)
     res.json({
         msg:"Enviado correctamente",
-        token,
+        qr:ultimoString,
     })
 }
 
