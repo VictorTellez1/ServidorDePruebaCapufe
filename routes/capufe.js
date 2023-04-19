@@ -6,7 +6,7 @@ import {tokenGet,tokenPost} from '../controllers/capufe.js'
 const routerCapufe=Router()
 
 
-routerCapufe.get('/:token', tokenGet );
+routerCapufe.get('/', tokenGet );
 
 
 

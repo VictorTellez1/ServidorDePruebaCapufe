@@ -3,11 +3,13 @@ import { response,request } from "express";
 
 
 export const tokenGet=async(req,res=response)=>{
-    const {token}=req.params
+    const {token,caseta}=req.query
     console.log(token)
+    console.log(caseta)
     res.json({
         msg:"Enviado correctamente",
-        token
+        token,
+        caseta
     })
    
 }
