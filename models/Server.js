@@ -6,7 +6,7 @@ import routerCapufe from '../routes/capufe.js'
 export class Server{
     constructor(){
         this.app=express()
-        this.port=process.env.PORT || 8080
+        this.port=process.env.PORT || 8081
         this.capufePath='/api/capufe'
 
 
@@ -30,7 +30,7 @@ export class Server{
         this.app.use(this.capufePath,routerCapufe)
     }
     listen(){
-        this.app.listen(this.port,()=>{
+        this.app.listen(this.port,'192.168.1.4',()=>{
             console.log(`Servidor corriendo en el puerto: ${this.port} ` )
         })
     }
